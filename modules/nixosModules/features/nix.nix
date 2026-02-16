@@ -1,16 +1,9 @@
-{inputs, self, pkgs, ...}: let
-    selfpkgs = self.packages."${pkgs.system}";
-  in {
+{inputs, ...}: {
   flake.nixosModules.nix = {pkgs, ...}: {
     imports = [
       inputs.nix-index-database.nixosModules.nix-index
     ];
     programs.nix-index-database.comma.enable = true;
-
-    programs.command-not-found.enable = false;
-    programs.${selfpkgs.terminal}.interactiveShellInit = ''
-      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
-    '';
 
     programs.direnv = {
       enable = true;
