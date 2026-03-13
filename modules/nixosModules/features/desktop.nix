@@ -10,7 +10,8 @@
     imports = [
       self.nixosModules.gtk
       self.nixosModules.wallpaper
-
+        
+      self.nixosModules.gaming
       self.nixosModules.pipewire
       self.nixosModules.firefox
       self.nixosModules.chromium
