@@ -1,7 +1,9 @@
 {
   flake.nixosModules.gaming = {pkgs, ...}: {
-    
-    programs.modrinth-app.enable = true;
+   
+    environment.systemPackages = [
+        pkgs.modrinth-app
+    ];
 
   };
 }
