@@ -5,5 +5,7 @@
         pkgs.modrinth-app
     ];
 
+    programs.steam.enable = true;
+
   };
 }
