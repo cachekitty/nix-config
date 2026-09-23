@@ -14,6 +14,7 @@
       self.nixosModules.base
       self.nixosModules.general
       self.nixosModules.desktop
+      self.nixosModules.virtualisation
     ];
 
     boot.loader.systemd-boot.enable = true;
