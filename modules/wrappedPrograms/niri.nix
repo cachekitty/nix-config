@@ -168,7 +168,6 @@ in {
             getExe pkgs.xwayland-satellite;
 
           spawn-at-startup = [
-            (getExe pkgs.regreet)
             (builtins.toString (getExe self'.packages.start-noctalia-shell))
           ];
         };
