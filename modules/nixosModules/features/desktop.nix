@@ -20,6 +20,16 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.niri;
 
+    services.greetd = {
+        enable = true;
+        settings = {
+            default_session = {
+                command = "${config.programs.niri.package}/bin/niri-session";
+                user = "cachekitty";
+            };
+        };
+    };
+
     preferences.autostart = [selfpkgs.start-noctalia-shell];
 
     environment.systemPackages = [
