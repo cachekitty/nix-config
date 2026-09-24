@@ -26,7 +26,7 @@
         settings = {
             default_session = {
                 command = "${config.programs.niri.package}/bin/niri-session";
-                user = "greeter";
+                user = "cachekitty";
             };
         };
     };
@@ -39,6 +39,7 @@
       selfpkgs.terminal
       pkgs.pcmanfm
       selfpkgs.noctalia-bundle
+      pkgs.swaylock
     ];
 
     fonts.packages = with pkgs; [
