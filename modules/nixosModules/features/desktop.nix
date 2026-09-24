@@ -1,6 +1,5 @@
 {self, ...}: {
   flake.nixosModules.desktop = {
-    config,
     pkgs,
     lib,
     ...
@@ -25,13 +24,13 @@
         enable = true;
         settings = {
             default_session = {
-                command = "${config.programs.niri.package}/bin/niri-session";
+                command = "${programs.niri.package}/bin/niri-session";
                 user = "cachekitty";
             };
         };
     };
 
-    systemd.user.services.niri.enableDefaultPath = false;
+    # systemd.user.services.niri.enableDefaultPath = false;
 
     preferences.autostart = [selfpkgs.start-noctalia-shell];
 
