@@ -7,6 +7,10 @@
   }: let
     inherit (lib) getExe;
     selfpkgs = self.packages."${pkgs.system}";
+    niri-config = pkgs.writeText "niri-config" ''
+        spawn-sh-at-startup "${config.programs.regreet.package}/bin/regreet; ${config.programs.niri.package}/bin/niri msg action quit --skip-confirmation"
+    '';
+
   in {
     imports = [
       self.nixosModules.gtk
@@ -21,12 +25,14 @@
     programs.niri.enable = true;
     programs.niri.package = selfpkgs.niri;
 
+    programs.regreet.enable = true;
+
     services.greetd = {
         enable = true;
         settings = {
             default_session = {
-                command = "${config.programs.niri.package}/bin/niri-session";
-                user = "cachekitty";
+                command = "${config.programs.niri.package}/bin/niri-session -c ${niri-config}";
+                user = "greeter";
             };
         };
     };
