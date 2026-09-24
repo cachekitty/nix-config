@@ -7,9 +7,9 @@
   }: let
     inherit (lib) getExe;
     selfpkgs = self.packages."${pkgs.system}";
-    niri-config = pkgs.writeText "niri-config" ''
-        spawn-sh-at-startup "${config.programs.regreet.package}/bin/regreet; ${config.programs.niri.package}/bin/niri msg action quit --skip-confirmation"
-    '';
+    # niri-config = pkgs.writeText "niri-config" ''
+    #     spawn-sh-at-startup "${config.programs.regreet.package}/bin/regreet; ${config.programs.niri.package}/bin/niri msg action quit --skip-confirmation"
+    # '';
 
   in {
     imports = [
@@ -31,7 +31,7 @@
         enable = true;
         settings = {
             default_session = {
-                command = "${config.programs.niri.package}/bin/niri-session -c ${niri-config}";
+                command = "${config.programs.niri.package}/bin/niri-session";
                 user = "greeter";
             };
         };
